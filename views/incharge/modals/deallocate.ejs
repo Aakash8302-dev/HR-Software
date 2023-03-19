@@ -1,0 +1,53 @@
+<div class="modal fade" id="deallocate">
+    <div class="modal-dialog form-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Assign Student</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+  
+        <div class="modal-body">
+          <form method="POST" action="/users/<%= user._id %>/assign_student" id="assignStudentForm">
+            <input type="hidden" name="_method" value="PUT" />
+            <label><b>Select Students (Press Ctrl while clicking to select multiple students)</b></label>
+            <div class="form-row">
+              <div class="col-md-1">
+                <div class="form-group">
+                  <select name="dept" class="form-control" size="9" multiple>
+                    <option value="AUT">AUT</option>
+                    <option value="BIO">BIO</option>
+                    <option value="CHE">CHE</option>
+                    <option value="CIV">CIV</option>
+                    <option value="CSE">CSE</option>
+                    <option value="ECE">ECE</option>
+                    <option value="EEE">EEE</option>
+                    <option value="INT">INT</option>
+                    <option value="MEC">MEC</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-11">
+                <div class="form-group">
+                  <select name="students" class="form-control" size="18" multiple>
+                  <% students.forEach(student => { %>
+                    <% if(!student.interviewers.includes(user._id)) { %>  
+                      <option value="<%= student._id %>" class="d-none">
+                        <%= student.register_num %> - <%= student.name %> (<%= student.dept %>)
+                      </option>
+                    <% } %> 
+                  <% }); %>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Assign Student(s)</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

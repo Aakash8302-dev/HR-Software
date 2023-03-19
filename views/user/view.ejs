@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/custom.css" />
+
+    <!-- Page Title -->
+    <title><%= user.name %> - <%= user.company %> | MOCK PLACEMENTS 2021</title>
+  </head>
+
+  <body>
+    <!-- Include Navbar Partial -->
+    <%- include("../partials/navbar.ejs"); %>
+
+    <!-- Container Class Begins Here -->
+    <main class="container">
+      <!-- Flash Message Partial -->
+      <div class="mt-2"><%- include("../partials/flash.ejs") %></div>
+
+      <% if(role === "Admin") { %>
+        <button class="btn btn-primary mb-3 px-4" data-toggle="modal" data-target="#addStudent">Add Student(s)</button>
+        <h3>Interviewer Name : <%= user.name %></h3>
+        <h3>Interviewer Company : <%= user.company %></h3>
+        <% let date = new Date(user.date); %> 
+        <h3>Interview Date : <%= date.getDate() %> February, 2021</h3>
+      <% } %>
+      <table class="table table-bordered table-hover text-center" id="students">
+        <thead class="bg-light">
+          <tr>
+            <th>SNO</th>
+            <th>Register Number</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Aptitude Score</th>
+            <th>GD Score</th>
+            <% if(role === "Admin") { %>
+            <th>Student Details</th>
+            <% } %>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% user.students.forEach((student, index) => { %>
+            <tr>
+              <% const sumOfValues = (obj) => Object.values(obj).reduce((a, b) => a + b) %>
+              <td><%= index + 1 %></td>
+              <td><%= student.register_num  %></td>
+              <td><%= student.name %></td>
+              <td><%= student.dept %></td>
+
+              <% if(student.aptitude_scores.core === -1){ %>
+                <td>Absent</td>
+              <%}else{ %>
+                <td><%= sumOfValues(student.aptitude_scores) %> / 50</td>
+              <%}%>
+                
+              <% if(student.gd_scores.subject_knowledge === -1){ %>
+                <td>Absent</td>
+              <%}else{ %>
+                <td><%= sumOfValues(student.gd_scores) %> / 50</td>
+              <%}%>
+             
+              
+              <% if(role === "Admin") { %>
+                <td><a href="/students/<%= student._id %>">View</a></td>
+              <% } %>
+
+              <% if(role === "Interviewer") { %>
+                <% let flag = 0 %> 
+                <% if(scores && scores.length) { %> 
+                  <% scores.forEach((score) => {  %> 
+                    <% if(score.student._id.equals(student._id)) { %>
+                      <% flag = 1 %>  
+                        <td class="text text-success">&#9989;</td>
+                    <% } %> 
+                  <% }); %> 
+                <% } %> 
+                <% if(flag == 0) { %> 
+                  <td>
+                    <button
+                      class="btn btn-secondary btn-sm px-4 rate-student"
+                      data-user="<%= user._id %>"
+                      data-student="<%= student._id %>"
+                      data-aptitude="<%= JSON.stringify(student.aptitude_scores) %>"
+                      data-gd="<%= JSON.stringify(student.gd_scores) %>"
+                      data-toggle="modal"
+                      data-target="#rateStudent"
+                    >
+                      Rate Student
+                    </button>
+                  </td>
+                  <% } %> 
+              <% } else if(role === "Admin") { %> 
+                <td>
+                  <form
+                    action="/users/<%=user._id %>/deallocate_student/<%= student._id %>"
+                    method="POST"
+                    class="d-inline"
+                  >
+                    <input type="hidden" name="_method" value="PUT" />
+                    <button type="submit" class="btn btn-sm btn-warning">Deallocate Student</button>
+                  </form>
+                </td>
+              <% } %>
+            </tr>
+          <% }); %>
+        </tbody>
+      </table>
+
+      <br>
+      <p class="mb-0">We shall forever remain deeply indebted to you for helping us make this event a grand success</p>
+      <p>
+        Please let us know your experience by filling up this <a href="https://docs.google.com/forms/d/e/1FAIpQLScb2qY-GrNbEkjHUmejVs4ZD7EM95-BAOGcwjGtpMwQM-gtuA/viewform?usp=sf_link">feedback form</a>.</p>
+    </main>
+
+    <!-- Include Footer Partial -->
+    <%- include("../partials/footer.ejs"); %>
+
+    <!-- Assign a student to an interviewer -->
+    <%- include("./modals/add.ejs"); %>
+
+    <!-- Score a student -->
+    <%- include("./modals/rate.ejs"); %>
+  </body>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+  <!-- PopperJS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+  <!-- BootstrapJS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- DataTablesJS -->
+  <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+
+  <!-- DataTables for Bootstrap -->
+  <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Script for Form Validation -->
+  <script src="/js/validateForms.js"></script>
+
+  <!-- Initialize Datatables -->
+  <script>
+    $(document).ready(function () {
+      $('#students').DataTable({ paging: false });
+    });
+  </script>
+
+  <script>
+    const rateBtns = document.querySelectorAll('.rate-student');
+
+    for (let i = 0; i < rateBtns.length; i++) {
+      rateBtns[i].addEventListener('click', function () {
+        const rateStudentForm = document.getElementById('rate-student-form');
+
+        const aptitudeScoresTable = document.querySelectorAll('#aptitudeScores tbody tr td:nth-of-type(2)');
+        const gdScoresTable = document.querySelectorAll('#gdScores tbody tr td:nth-of-type(2)');
+
+        const userId = this.getAttribute('data-user') ?? '';
+        const studentId = this.getAttribute('data-student') ?? '';
+
+        rateStudentForm.action = `/users/${userId}/students/${studentId}`;
+
+        const aptitudeScores = JSON.parse(this.getAttribute('data-aptitude'));
+
+        if(aptitudeScores.core === -1){
+          aptitudeScoresTable[0].innerHTML = "Absent"
+          aptitudeScoresTable[1].innerHTML = "Absent"
+          aptitudeScoresTable[2].innerHTML = "Absent"
+          aptitudeScoresTable[3].innerHTML = "Absent"
+        }else{
+          aptitudeScoresTable[0].innerHTML = `${aptitudeScores['core']} / 20`;
+          aptitudeScoresTable[1].innerHTML = `${aptitudeScores['verbal']} / 10`;
+          aptitudeScoresTable[2].innerHTML = `${aptitudeScores['quants']} / 10`;
+          aptitudeScoresTable[3].innerHTML = `${aptitudeScores['programming']} / 10`;
+        }
+
+
+
+        const gdScores = JSON.parse(this.getAttribute('data-gd'));
+        if(gdScores.subject_knowledge === -1){
+          gdScoresTable[0].innerHTML = "Absent"
+          gdScoresTable[1].innerHTML = "Absent"
+          gdScoresTable[2].innerHTML = "Absent"
+          gdScoresTable[3].innerHTML = "Absent"
+          gdScoresTable[4].innerHTML = "Absent"
+        }else{
+          gdScoresTable[0].innerHTML = `${gdScores['subject_knowledge']} / 5`;
+          gdScoresTable[1].innerHTML = `${gdScores['communication_skills']} / 5`;
+          gdScoresTable[2].innerHTML = `${gdScores['body_language']} / 5`;
+          gdScoresTable[3].innerHTML = `${gdScores['listening_skills']} / 5`;
+          gdScoresTable[4].innerHTML = `${gdScores['critical_thinking']} / 5`;
+        }
+        
+      });
+    }
+  </script>
+</html>

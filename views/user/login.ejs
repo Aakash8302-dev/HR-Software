@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/favicon.ico" />
+
+    <link rel="stylesheet" href="https://bootswatch.com/4/cosmo/bootstrap.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/custom.css" />
+
+    <!-- Page Title -->
+    <title>FORESE - MOCK PLACEMENTS 2021 | USER LOGIN</title>
+  </head>
+
+  <body>
+    <!-- Container class begins here -->
+    <main class="container">
+      <div class="row mt-4">
+        <div class="col-md-6 m-auto">
+          <div class="card card-body">
+            <h1 class="text-center m-0 mb-3">Login</h1>
+
+            <!-- Flash message partial -->
+            <%- include("../partials/flash.ejs") %>
+
+            <form action="/users/login" method="POST" class="needs-validation" novalidate>
+              <div class="form-group">
+                <!-- Input for username -->
+                <label for="username">Username</label>
+                <input
+                  type="username"
+                  name="username"
+                  id="username"
+                  class="form-control"
+                  placeholder="Enter Username"
+                  autofocus
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="password">Password</label>
+                <!-- Input for password -->
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  class="form-control"
+                  placeholder="Enter Password"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block">LOGIN</button>
+              <p class="mt-2">Click <a href="/incharges/login">here</a> for student incharge login.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
+  <!-- PopperJS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+  <!-- BootstrapJS -->
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+  <!-- Script to validate forms -->
+  <script src="/js/validateForms.js"></script>
+</html>

@@ -1,0 +1,305 @@
+<!-- Assign user Modal -->
+<div class="modal fade" id="rateStudent">
+  <div class="modal-dialog form-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-uppercase">Score Student</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6">
+            <p class="text-uppercase"><b>Aptitude Test Results</b></p>
+            <table class="table table-sm table-bordered table-hover text-center" id="aptitudeScores">
+              <thead class="text-uppercase bg-light">
+                <th>Parameter</th>
+                <th>Score</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-uppercase"><b>Core</b></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase"><b>Verbal</b></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase"><b>Quants</b></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase"><b>Coding</b></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-md-6">
+            <p class="text-uppercase"><b>Group Discussion Results</b></p>
+            <table class="table table-sm table-bordered table-hover text-center" id="gdScores">
+              <thead class="text-uppercase">
+                <th>Parameter</th>
+                <th>Score</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="text-uppercase"><b>Subject Knowledge</b></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase"><b>Communication Skills</b></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase"><b>Body Language</b></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase"><b>Listening Skills</b></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td class="text-uppercase"><b>Active Participation</b></td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <form method="POST" class="needs-validation" id="rate-student-form" novalidate>
+          <div class="form-row">
+            <div class="col-md-4">
+              <p class="scoreParameter">Professional Appearance and Attitude</p>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="professionalAppearence" value="1" required />
+                  1
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="professionalAppearence" value="2"/>
+                  2
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="professionalAppearence" value="3"/>
+                  3
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="professionalAppearence" value="4"/>
+                  4
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="professionalAppearence" value="5" />
+                  5
+                </label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <p class="scoreParameter">Managerial Aptitude</p>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="managerialAptitude" value="1" required />
+                  1
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="managerialAptitude" value="2" />
+                  2
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="managerialAptitude" value="3" />
+                  3
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="managerialAptitude" value="4" />
+                  4
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="managerialAptitude" value="5" />
+                  5
+                </label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <p class="scoreParameter">General Intelligence and Awareness</p>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="generalIntelligence" value="1" required />
+                  1
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="generalIntelligence" value="2" />
+                  2
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="generalIntelligence" value="3" />
+                  3
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="generalIntelligence" value="4" />
+                  4
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="generalIntelligence" value="5" />
+                  5
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-4">
+              <p class="scoreParameter">Technical Knowledge</p>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="technicalKnowledge" value="1" required />
+                  1
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="technicalKnowledge" value="2" />
+                  2
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="technicalKnowledge" value="3" />
+                  3
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="technicalKnowledge" value="4" />
+                  4
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="technicalKnowledge" value="5" />
+                  5
+                </label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <p class="scoreParameter">Communication Skills</p>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="communicationSkills" value="1" required />
+                  1
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="communicationSkills" value="2" />
+                  2
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="communicationSkills" value="3" />
+                  3
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="communicationSkills" value="4" />
+                  4
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="communicationSkills" value="5" />
+                  5
+                </label>
+              </div>
+            </div>
+
+            <div class="col-md-4">
+              <p class="scoreParameter">Self-Confidence</p>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="selfConfidence" value="1" required />
+                  1
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="selfConfidence" value="2" />
+                  2
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="selfConfidence" value="3" />
+                  3
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="selfConfidence" value="4" />
+                  4
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                  <input class="form-check-input" type="radio" name="selfConfidence" value="5" />
+                  5
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label><b>Comments</b></label>
+                <textarea
+                  name="comments"
+                  rows="4"
+                  placeholder="Comments for the student (Strengths, Weaknesses, Areas of Imrprovement)"
+                  class="form-control"
+                  required
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Save Score</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

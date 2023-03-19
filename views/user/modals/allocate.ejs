@@ -1,0 +1,79 @@
+<!-- New user Modal -->
+<div class="modal fade" id="allocate">
+    <div class="modal-dialog form-modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Allocate Incharge </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+  
+        <div class="modal-body">
+          <form method="post" action="/users/allocate" class="needs-validation" name="allocate" novalidate>
+            <select name="incharge" class="form-control mt-2" required>
+                <option value="" selected disabled>Select Incharge</option>
+                <% incharges.forEach((inch) => { %>
+                    <option value="<%= inch._id %>">
+                        <%= inch.name %>
+                    </option>
+                <% }); %>
+            </select>
+            <select name="interviewer" class="form-control mt-2" required>
+                <option value="" selected disabled>Select the HR you are Incharge For</option>
+                <% users.forEach( user => { %>
+                    <% if(user.role === "Interviewer"){ %>
+                       <% date = new Date(user.date) %>
+                        <% day = date.getDate() %>
+                        <option value="<%= user._id %>">
+                            <%= user.name %> - <%= user.company %> (<%= day %> February, 2021)
+                        </option>
+                    <%} %>
+
+                <% }); %>
+            </select>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-success">Save User</button>
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // const newUserForm = document.forms['allocate'];
+    // const role = newUserForm['role'];
+  
+    // role.addEventListener('change', function () {
+    //   if (this.value === 'Interviewer') {
+    //     console.log(newUserForm['date'].classList.remove('d-none'));
+    //     newUserForm['company'].classList.remove('d-none');
+    //     newUserForm['interviewer'].classList.add('d-none');
+    //     newUserForm['date'].required = true;
+    //     newUserForm['company'].required = true;
+    //     newUserForm['interviewer'].required = false;
+    //   } else if (this.value === 'Incharge') {
+    //     newUserForm['interviewer'].classList.remove('d-none');
+    //     newUserForm['date'].classList.add('d-none');
+    //     newUserForm['company'].classList.add('d-none');
+    //     newUserForm['company'] = '';
+    //     newUserForm['interviewer'].required = true;
+    //     newUserForm['date'].required = false;
+    //     newUserForm['company'].required = false;
+    //   } else {
+    //     newUserForm['date'] = '';
+    //     newUserForm['company'] = '';
+    //     newUserForm['interviewer'] = '';
+    //     newUserForm['date'].classList.add('d-none');
+    //     newUserForm['company'].classList.add('d-none');
+    //     newUserForm['interviewer'].classList.add('d-none');
+    //     newUserForm['date'].required = false;
+    //     newUserForm['company'].required = false;
+    //     newUserForm['interviewer'].required = false;
+    //   }
+    // });
+  </script>
+  

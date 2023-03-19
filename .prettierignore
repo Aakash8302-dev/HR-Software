@@ -1,0 +1,7 @@
+views/student/modals/add.ejs
+views/user/modals/add.ejs
+views/student/view.ejs
+views/partials/user/form_fields.ejs
+views/user/view.ejs
+views/user/index.ejs
+views/score/index.ejs

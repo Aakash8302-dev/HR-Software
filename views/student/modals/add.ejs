@@ -1,0 +1,37 @@
+<!-- Assign user Modal -->
+<div class="modal fade" id="addInterviewer">
+  <div class="modal-dialog form-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Assign Student</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form method="POST" action="/students/<%= student._id %>/assign_user" class="needs-validation" novalidate>
+          <input type="hidden" name="_method" value="PUT" />
+          <label><b>Select Interviewers (Press Ctrl while clicking to select multiple interviewers</b></label>
+          <select name="users" class="form-control" size="15" multiple>
+            <% users.forEach(user => { %>
+              <% if(user.role === "Interviewer") { %> 
+                <%  if(!user.students.includes(student._id)) { %>
+                  <% date = new Date(user.date) %> 
+                  <% day = date.getDate() %> 
+                  <option value="<%= user._id  %>">
+                    <%= user.name %> - <%= user.company %> (<%= day %> February, 2021)
+                  </option>
+                <% } %> 
+              <% } %> 
+            <% }); %>
+          </select>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success">Assign Student</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -16,12 +16,12 @@ const PORT = process.env.PORT || 5000;
 
 // Listen for app on server
 const server = app.listen(PORT, () => {
-  console.log(`Server running in ${process.env.NODE_ENV.underline} on port ${PORT}.`.yellow);
+  console.log(`Server running in ${process.env.NODE_ENV} on port ${PORT}.`);
 });
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
-  console.log(`Error: ${err.message}`.red);
+  console.log(`Error: ${err.message}`);
   // Close server and exit process
   server.close(() => process.exit(1));
 });

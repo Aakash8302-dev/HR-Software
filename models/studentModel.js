@@ -4,7 +4,6 @@ const StudentSchema = mongoose.Schema({
   register_num: {
     type: Number,
     required: true,
-    unique: true,
   },
   name: {
     type: String,
@@ -14,7 +13,7 @@ const StudentSchema = mongoose.Schema({
   },
   dept: {
     type: String,
-    enum: ['AUT', 'BIO', 'CHE', 'CIV', 'CSE', 'ECE', 'EEE', 'INT', 'MEC'],
+    enum: ['AUT', 'BIO', 'CHE', 'CVE', 'CSE', 'ECE', 'EEE', 'INT', 'MEC', 'ADS', 'CIV'],
     required: true,
   },
   section: {
@@ -23,12 +22,12 @@ const StudentSchema = mongoose.Schema({
   },
   email: {
     type: String,
-    required: true,
+    required: false,
   },
   preference: {
     type: String,
-    enum: ['Offline', 'Online'],
-    required: true,
+    enum: ['Offline', 'Online', ''],
+    required: false,
   },
   gd_scores: {
     type: Object,

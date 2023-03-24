@@ -11,10 +11,7 @@
 
 <select name="date" class="form-control mt-2 d-none">
   <option value="" selected disabled>Select Date</option>
-  <option value="2021-02-20">20 February, 2021</option>
-  <option value="2021-02-21">21 February, 2021</option>
-  <option value="2021-02-27">27 February, 2021</option>
-  <option value="2021-02-28">28 February, 2021</option>
+  <option value="2023-03-26">26 March, 2023</option>
 </select>
 
 <select name="interviewer" class="form-control mt-2 d-none">
@@ -24,7 +21,7 @@
       <% date = new Date(user.date) %> 
       <% day = date.getDate() %> 
       <option value="<%= user._id  %>">
-        <%= user.name %> - <%= user.company %> (<%= day %> February, 2021)
+        <%= user.name %> - <%= user.company %> (<%= day %> March, 2023)
       </option>
     <% } %>
   <% }); %>

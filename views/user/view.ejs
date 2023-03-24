@@ -31,7 +31,7 @@
         <h3>Interviewer Name : <%= user.name %></h3>
         <h3>Interviewer Company : <%= user.company %></h3>
         <% let date = new Date(user.date); %> 
-        <h3>Interview Date : <%= date.getDate() %> February, 2021</h3>
+        <h3>Interview Date : <%= date.getDate() %> March, 2023</h3>
       <% } %>
       <table class="table table-bordered table-hover text-center" id="students">
         <thead class="bg-light">
@@ -196,11 +196,11 @@
           gdScoresTable[3].innerHTML = "Absent"
           gdScoresTable[4].innerHTML = "Absent"
         }else{
-          gdScoresTable[0].innerHTML = `${gdScores['subject_knowledge']} / 5`;
-          gdScoresTable[1].innerHTML = `${gdScores['communication_skills']} / 5`;
-          gdScoresTable[2].innerHTML = `${gdScores['body_language']} / 5`;
-          gdScoresTable[3].innerHTML = `${gdScores['listening_skills']} / 5`;
-          gdScoresTable[4].innerHTML = `${gdScores['critical_thinking']} / 5`;
+          gdScoresTable[0].innerHTML = `${gdScores['subject_knowledge']} / 10`;
+          gdScoresTable[1].innerHTML = `${gdScores['communication_skills']} / 10`;
+          gdScoresTable[2].innerHTML = `${gdScores['body_language']} / 10`;
+          gdScoresTable[3].innerHTML = `${gdScores['listening_skills']} / 10`;
+          gdScoresTable[4].innerHTML = `${gdScores['active_participation']} / 10`;
         }
         
       });

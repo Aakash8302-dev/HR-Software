@@ -76,27 +76,23 @@
             <tbody>
               <tr>
                 <td class="text-uppercase"><b>Subject Knowledge</b></td>
-                <td><%= student.gd_scores["subject_knowledge"] %> / 5</td>
+                <td><%= student.gd_scores["subject_knowledge"] %> / 10</td>
               </tr>
               <tr>
                 <td class="text-uppercase"><b>Communication Skills</b></td>
-                <td><%= student.gd_scores["communication_skills"] %> / 5</td>
+                <td><%= student.gd_scores["communication_skills"] %> / 10</td>
               </tr>
               <tr>
                 <td class="text-uppercase"><b>Body Language</b></td>
-                <td><%= student.gd_scores["body_language"] %> / 5</td>
+                <td><%= student.gd_scores["body_language"] %> / 10</td>
               </tr>
               <tr>
                 <td class="text-uppercase"><b>Listening Skills</b></td>
-                <td><%= student.gd_scores["listening_skills"] %> / 5</td>
+                <td><%= student.gd_scores["listening_skills"] %> / 10</td>
               </tr>
               <tr>
-                <td class="text-uppercase"><b>Critical Thinking</b></td>
-                <td><%= student.gd_scores["critical_thinking"] %> / 5</td>
-              </tr>
-              <tr>
-                <td class="text-uppercase"><b>Leadership Skills</b></td>
-                <td><%= student.gd_scores["leadership_skills"] %> / 5</td>
+                <td class="text-uppercase"><b>Active Participation</b></td>
+                <td><%= student.gd_scores["active_participation"] %> / 10</td>
               </tr>
             </tbody>
           </table>
@@ -124,7 +120,7 @@
             <td><%= index + 1 %></td>
             <td><%= interviewer.name %></td>
             <td><%= interviewer.company %></td>
-            <td><%= interview_date.getDate() %> February, 2021</td>
+            <td><%= interview_date.getDate() %> March, 2023</td>
             <td>
               <a href="/users/<%= interviewer._id %>" class="btn btn-dark btn-sm">View</a>
               <form

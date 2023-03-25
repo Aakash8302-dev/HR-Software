@@ -18,9 +18,9 @@ const incharges = JSON.parse(fs.readFileSync(`${__dirname}/resources/data/inchar
 // Import into DB
 const importData = async () => {
   try {
-    await Student.create(students);
+    //await Student.create(students);
     await User.create(users);
-    await Incharge.create(incharges);
+    // await Incharge.create(incharges);
 
     console.log('Data Imported...'.green);
     process.exit();

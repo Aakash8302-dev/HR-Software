@@ -14241,11 +14241,11 @@
     "section": "",
     "preference": "",
     "gd_scores": {
-      "subject_knowledge": -1,
-      "communication_skills": -1,
-      "listening_skills": -1,
-      "active_participation": -1,
-      "body_language": -1
+      "subject_knowledge": 9,
+      "communication_skills": 9,
+      "listening_skills": 9,
+      "active_participation": 10,
+      "body_language": 9
     },
     "aptitude_scores": {
       "core": 11,

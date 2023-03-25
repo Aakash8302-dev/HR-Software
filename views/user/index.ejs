@@ -103,12 +103,15 @@
                         </td>
                         <td><%= studentsPerInterviewer[user._id] %></td>
                         <td>
-                          <a href="/users/<%= user._id %>" class="btn btn-sm btn-secondary">View</a>
+                          <div class="d-flex mb-1">
+                            <a href="/users/<%= user._id %>" class="btn btn-sm btn-secondary">View</a>
                         
-                          <form action="/users/<%= user._id %>" method="POST" class="d-inline">
-                            <input type="hidden" name="_method" value="DELETE" />
-                            <button class="btn btn-sm btn-danger" type="submit">Delete</button>
-                          </form>
+                            <form action="/users/<%= user._id %>" method="POST" class="d-inline">
+                              <input type="hidden" name="_method" value="DELETE" />
+                              <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                            </form>
+                          </div>
+                          
                           
 
                           <% incharges.forEach((incharge) => { %> 
